@@ -1,0 +1,108 @@
+<md-toolbar color="primary">
+  <span>Angular Material Components</span>
+</md-toolbar>
+<md-toolbar>
+  <span>Buttons</span>
+</md-toolbar>
+
+<md-tab-group>
+  <md-tab label="Raised Buttons">
+    <br />
+    <div class="button-row">
+      <button md-raised-button>Basic</button>
+      <button md-raised-button color="primary">Primary</button>
+      <button md-raised-button color="accent">Accent</button>
+      <button md-raised-button color="warn">Warn</button>
+      <button md-raised-button disabled>Disabled</button>
+      <a md-raised-button routerLink=".">Link</a>
+    </div>
+    <br />
+  </md-tab>
+  <md-tab label="Basic Buttons">
+    <br />
+    <div class="button-row">
+      <button md-button>Basic</button>
+      <button md-button color="primary">Primary</button>
+      <button md-button color="accent">Accent</button>
+      <button md-button color="warn">Warn</button>
+      <button md-button disabled>Disabled</button>
+      <a md-button routerLink=".">Link</a>
+    </div>
+    <br />
+  </md-tab>
+</md-tab-group>
+
+<br /><br />
+<Form>
+  <md-toolbar>
+    <span>Form Fields</span>
+  </md-toolbar>
+  <br />
+
+  <md-form-field class="example-full-width">
+    <input
+      mdInput
+      [(ngModel)]="favouriteFood"
+      placeholder="Favorite food"
+      value="Sushi"
+    />
+  </md-form-field>
+  Favorite {{ favouriteFood }}
+  <md-form-field>
+    <input
+      mdInput
+      [mdDatepicker]="picker"
+      [(ngModel)]="date"
+      placeholder="Choose a date"
+    />
+    <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+    <md-datepicker #picker></md-datepicker>
+  </md-form-field>
+
+  <br />
+  Choosen Date {{ date | date: shortDate }}
+  <br />
+  <md-radio-group [(ngModel)]="foodOption">
+    <md-radio-button value="1">Option 1</md-radio-button>&nbsp;
+    <md-radio-button value="2">Option 2</md-radio-button>
+  </md-radio-group>
+
+  <br />
+  Choosen Option {{ foodOption }}
+  <br />
+
+  <md-checkbox [(ngModel)]="required">Checked</md-checkbox>
+  <br />
+  Choosen required {{ required }}
+  <br />
+
+  <div *ngIf="required">
+    Since you choose required, Please find in the required information
+    <br />
+    How many rows items:
+    <mat-form-field appearance="fill">
+      <mat-label>Favorite food</mat-label>
+      <mat-select [(ngModel)]="selectedCount" name="">
+        <mat-option *ngFor="let count of [0,1,2,3,45]" [value]="count">
+          {{count}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <table border="1px solid Black" cellSpacing="0" cellPadding="0">
+      <thead>
+        <td>S.No</td>
+        <td>Name</td>
+      </thead>
+      <tbody>
+        <div *ngFor="let item of items; let i = index">
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </div>
+      </tbody>
+    </table>
+  </div>
+
+  <button md-raised-button color="primary" (click)="submit()">Submit</button>
+</Form>
